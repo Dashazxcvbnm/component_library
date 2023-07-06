@@ -223,14 +223,33 @@
         disabled/>
 
     </div>
+
+    <VueBaseInput
+    v-model="firstName"
+    label="Текствое описание"
+    emptyFieldText="Пустое поле"
+    errorFieldText="Недостаточно символов"
+    validFieldText="Данные валидны"
+    requiredField
+    />
+
+    <VueBaseInput
+    v-model="lastName"
+    label="Текствое описание"
+    />
 </template>
 
 <script setup>
 import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
+import VueBaseInput from '../components/GUI/VueBaseInput.vue'
+import { ref } from 'vue'
 
 function testClick() {
     console.log('Клик!')
 }
+
+const firstName = ref('')
+const lastName = ref('')
 </script>
 
 <style scoped>
