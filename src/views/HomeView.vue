@@ -1,60 +1,97 @@
 <template>
-
     <div class="btns-wrapper">
-<!-- базовый интуп -->
-        <VueBaseButton
-        class="btn"/> 
-<!-- модификация базового инпута -->
-        <VueBaseButton
-        borderStyle="2px dashed #EB5757"
-        backgroundHover="#baf5ee"
-        class="btn btn_size"/>
-    </div>
-    
-    <div class="btns-wrapper">
-<!-- базовый черно-красный инпут -->
-        <VueBaseButton
-        class="btn"
-        blackAndRedStyle
-        title="Add to bag"/>
-<!-- модификация черно-красного инпута -->
-        <VueBaseButton
-        borderHover="2px solid #000000"
-        backgroundColor="#fcbbe1"
-        colorText="#000000"
-        backgroundHover="#c4bbfc"
-        class="btn"
-        blackAndRedStyle
-        title="Add to bag"/>
-    </div>
-    
-    <div class="btns-wrapper">
-<!-- базовый белый инпут -->
-        <VueBaseButton
-        leftIcon
-        iconUrl="src/components/icons/Heart.svg"
-        class="btn btn-wrap"
-        whiteStyle
-        title="Save"
-        @click="testClick"/>
-<!-- модификация белого инпута -->
-        <VueBaseButton
-        rightIcon
-        iconUrl="src/components/icons/Heart.svg"
-        marginForIcon="10"
-        class="btn btn-wrap"
-        whiteStyle
-        title="Save"
-        @click="testClick"/>
-
-    </div>
         
+    <!-- Маленькие кнопки. С текстом и икноками -->
+        <VueBaseButton
+        class="btn"
+        size="small"
+        appearance="editing" />
+
+        <VueBaseButton
+        class="btn"
+        title=""
+        size="small"
+        appearance="editing"
+        rightIcon iconUrl="src/components/icons/BlackCross.svg" 
+        @click="testClick" />
+
+        <VueBaseButton
+        class="btn"
+        title=""
+        size="small"
+        appearance="editing"
+        rightIcon iconUrl="src/components/icons/Pencil.svg" 
+        @click="testClick" />
+
+        <VueBaseButton
+        class="btn"
+        title=""
+        size="small"
+        appearance="editing"
+        rightIcon
+        iconUrl="src/components/icons/HeartSmall.png"
+        @click="testClick" />
+
+        <!-- Базовая серия medium кнопка -->
+        <VueBaseButton
+        class="btn"
+        title="Apply" />
+
+        <!-- large кнопка в черно-красном цвете -->
+        <VueBaseButton
+        class="btn"
+        title="Add to bag"
+        size="large"
+        appearance="main-black" />
+
+        <!-- large кнопка в белом цвете -->
+        <VueBaseButton
+        class="btn"
+        title="save"
+        size="large"
+        appearance="main-white"
+        leftIcon
+        iconUrl="src/components/icons/Heart.svg" />
+
+    </div>
+
+    <!-- "Прозрачные" кнопки с разным background-color у обертки-->
+    <div class="bg-wrap bg-wrap_first">
+
+        <VueBaseButton
+        class="bg-btn"
+        size="large"
+        appearance="transparent"
+        leftIcon
+        iconUrl="src/components/icons/Pencil.svg" />
+
+    </div>
+
+    <div class="bg-wrap bg-wrap_second">
+
+        <VueBaseButton
+        class="bg-btn"
+        size="large"
+        appearance="transparent"
+        rightIcon
+        iconUrl="src/components/icons/Heart.svg" />
+
+    </div>
+
+    <div class="bg-wrap bg-wrap_third">
+
+        <VueBaseButton
+        class="bg-btn"
+        size="large"
+        appearance="transparent-white" />
+
+    </div>
 </template>
 
 <script setup>
-import VueBaseButton from '../components/VueBaseButton.vue'
+import VueBaseButton from '../components/GUI/buttons/VueBaseButton.vue';
 
-function testClick () {
+function testClick() {
     console.log('Клик!')
 }
 </script>
@@ -70,5 +107,25 @@ function testClick () {
 
 .btn_size {
     width: 185px;
+}
+
+.bg-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.bg-wrap_first {
+    background-color: #e39cf7;
+}
+
+.bg-wrap_second {
+    background-color: #feed9f;
+}
+
+.bg-wrap_third {
+    background-color: #000000;
 }
 </style>
