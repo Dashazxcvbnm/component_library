@@ -1,15 +1,20 @@
 <template>
     <div :class="[{ 'button-wrapper_size_small_width': rightIcon || leftIcon },
+    { 'button-wrapper_disabled': disabled },
         'button-wrapper',
         buttonSize]">
 
-        <button :class="['button-form', buttonStyle]">
+        <button :class="[{ 'button-form_small_circle': circle && (props.size === 'small')},
+        { 'button-form_medium_circle': circle && (props.size === 'medium')},
+        { 'button-form_large_circle': circle && (props.size === 'large')},
+        { 'button_disabled': disabled },
+         'button-form', buttonStyle]">
 
-            <img class="icon" v-if="leftIcon" :src="(`${iconUrl}`)">
+            <img :class="[{'icon_disabled': disabled}, 'icon']" v-if="leftIcon" :src="(`${iconUrl}`)">
 
             <span v-if="buttonTitle" :class="[{ 'button-text_margin': rightIcon || leftIcon }]">{{ buttonTitle }}</span>
 
-            <img class="icon" v-if="rightIcon" :src="(`${iconUrl}`)">
+            <img :class="[{'icon_disabled': disabled}, 'icon']" v-if="rightIcon" :src="(`${iconUrl}`)">
 
         </button>
 
@@ -62,10 +67,20 @@ const props = defineProps({
     iconUrl: {
         type: String,
         default: ''
+    },
+
+    circle: {
+        type: Boolean,
+        default: false
+    },
+
+    disabled: {
+        type: Boolean,
+        default: false
     }
 })
 
-const buttonStyle = ref(`button_size_${props.appearance}`)
+const buttonStyle = ref(`button_appearance_${props.appearance}`)
 const buttonSize = ref(`button-wrapper_size_${props.size}`)
 
 const buttonTitle = computed(() => {
@@ -94,11 +109,25 @@ const buttonTitle = computed(() => {
     text-transform: uppercase;
 }
 
+.button-form {
+    &_small_circle {
+        border-radius: 12px;
+        }
+
+    &_medium_circle {
+        border-radius: 30px;
+    }
+
+    &_large_circle {
+        border-radius: 35px;
+    }
+}
+
 .button-text_margin {
     margin: 0 7px;
 }
 
-.button_size {
+.button_appearance {
     &_transparent {
         @include base-style($basic-black, $transparent-color, 2px solid $basic-black);
         @include transparent-style;
@@ -165,7 +194,19 @@ const buttonTitle = computed(() => {
     }
 }
 
+.button-wrapper_disabled {
+    pointer-events: none;
+}
+
+.button_disabled {
+    @include base-style($plain-grey, $light-grey, $light-grey);
+}
+
 .icon {
     margin-bottom: 2px;
+
+    &_disabled {
+        filter: invert(40%);
+    }
 }
 </style>

@@ -86,6 +86,143 @@
         appearance="transparent-white" />
 
     </div>
+
+    <!-- Круглые кнопки -->
+    <div class="btns-wrapper">
+        
+            <VueBaseButton
+            class="btn"
+            size="small"
+            appearance="editing"
+            circle
+            @click="testClick"/>
+    
+            <VueBaseButton
+            class="btn"
+            title=""
+            size="small"
+            appearance="editing"
+            rightIcon
+            iconUrl="src/components/icons/BlackCross.svg"
+            circle/>
+    
+            <VueBaseButton
+            class="btn"
+            title=""
+            size="small"
+            appearance="editing"
+            rightIcon
+            iconUrl="src/components/icons/Pencil.svg" 
+            circle/>
+    
+            <VueBaseButton
+            class="btn"
+            title=""
+            size="small"
+            appearance="editing"
+            rightIcon
+            iconUrl="src/components/icons/HeartSmall.png"
+            circle/>
+    
+            <VueBaseButton
+            class="btn"
+            title="Apply"
+            circle/>
+    
+            <VueBaseButton
+            class="btn"
+            title="Add to bag"
+            size="large"
+            appearance="main-black"
+            circle/>
+    
+            <VueBaseButton
+            class="btn"
+            title="save"
+            size="large"
+            appearance="main-white"
+            leftIcon
+            iconUrl="src/components/icons/Heart.svg"
+            circle/>
+    
+        </div>
+
+        <div>
+
+            <VueBaseButton
+            class="btn"
+            size="large"
+            appearance="transparent"
+            circle/>
+
+        </div>
+
+        <!-- Деактивированные кнопки -->
+        <div class="btns-wrapper">
+
+        <VueBaseButton
+        class="btn"
+        size="small"
+        appearance="editing"
+        circle
+        disabled
+        @click="testClick"/>
+
+        <VueBaseButton
+        class="btn"
+        title=""
+        size="small"
+        appearance="editing"
+        rightIcon
+        iconUrl="src/components/icons/BlackCross.svg"
+        circle
+        disabled/>
+
+        <VueBaseButton
+        class="btn"
+        title=""
+        size="small"
+        appearance="editing"
+        rightIcon
+        iconUrl="src/components/icons/Pencil.svg" 
+        circle
+        disabled/>
+
+        <VueBaseButton
+        class="btn"
+        title=""
+        size="small"
+        appearance="editing"
+        rightIcon
+        iconUrl="src/components/icons/HeartSmall.png"
+        circle
+        disabled/>
+
+        <VueBaseButton
+        class="btn"
+        title="Apply"
+        circle
+        disabled/>
+
+        <VueBaseButton
+        class="btn"
+        title="Add to bag"
+        size="large"
+        appearance="main-black"
+        circle
+        disabled/>
+
+        <VueBaseButton
+        class="btn"
+        title="save"
+        size="large"
+        appearance="main-white"
+        leftIcon
+        iconUrl="src/components/icons/Heart.svg"
+        circle
+        disabled/>
+
+    </div>
 </template>
 
 <script setup>
