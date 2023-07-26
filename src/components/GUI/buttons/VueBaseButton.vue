@@ -206,7 +206,7 @@ const buttonTitle = computed(() => {
     margin-bottom: 2px;
 
     &_disabled {
-        filter: invert(40%);
+        filter: opacity(50%)
     }
 }
 </style>
