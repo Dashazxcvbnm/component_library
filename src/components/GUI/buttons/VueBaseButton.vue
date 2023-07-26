@@ -8,7 +8,10 @@
         { 'button-form_medium_circle': circle && (props.size === 'medium')},
         { 'button-form_large_circle': circle && (props.size === 'large')},
         { 'button_disabled': disabled },
-         'button-form', buttonStyle]">
+         'button-form', buttonStyle]"
+         :type="type"
+         :form="form"
+         :autofocus="autofocus">
 
             <img :class="[{'icon_disabled': disabled}, 'icon']" v-if="leftIcon" :src="(`${iconUrl}`)">
 
@@ -36,8 +39,7 @@ const props = defineProps({
     },
 
     form: {
-        type: String,
-        default: ''
+        type: String
     },
 
     size: {
@@ -75,6 +77,11 @@ const props = defineProps({
     },
 
     disabled: {
+        type: Boolean,
+        default: false
+    },
+
+    autofocus: {
         type: Boolean,
         default: false
     }
