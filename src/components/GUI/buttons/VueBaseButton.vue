@@ -97,8 +97,6 @@ const buttonTitle = computed(() => {
 </script>
 
 <style scoped lang="scss">
-@import "src/assets/mixins.scss";
-@import "src/assets/variables.scss";
 
 .button-form {
     display: flex;

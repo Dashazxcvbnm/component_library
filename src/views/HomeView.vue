@@ -226,7 +226,7 @@
 </template>
 
 <script setup>
-import VueBaseButton from '../components/GUI/buttons/VueBaseButton.vue';
+import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
 
 function testClick() {
     console.log('Клик!')
