@@ -109,7 +109,6 @@ const buttonTitle = computed(() => {
     font-family: $basic-font;
     font-size: 14px;
     line-height: 20.75px;
-    font-weight: 500;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
