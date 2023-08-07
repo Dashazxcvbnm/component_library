@@ -20,7 +20,7 @@
         title=""
         size="small"
         appearance="editing"
-        rightIcon iconUrl="src/components/icons/Pencil.svg" 
+        rightIcon iconUrl="src/components/icons/Pencil.svg"
         @click="testClick" />
 
         <VueBaseButton
@@ -224,32 +224,254 @@
 
     </div>
 
+    <div class="wrap">
+
+        <span class="text">small инпут</span>
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        size="small"
+        notificationText="Базовое уведомление"
+        notificationTheme="primary"/>
+
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        size="small"
+        notificationText="Успех"
+        notificationTheme="success"/>
+
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        size="small"
+        notification-text="Предупреждение"
+        notificationTheme="danger"/>
+
+        <span class="text">без label</span>
+        <VueBaseInput
+        class="input"
+        size="small"/>
+
+        <span class="text">label сверху</span>
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        labelTop
+        size="small"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">medium инпут</span>
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        size="medium"/>
+
+        <VueBaseInput
+        class="input"
+        size="medium"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">large инпут</span>
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        size="large"/>
+
+        <VueBaseInput
+        class="input"
+        size="large"
+        notificationText="Базовое уведомление"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Инпут без фиксированной ширины. Занимает ширину контейнера</span>
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"/>
+
+        <VueBaseInput
+        class="input"/>
+
+    </div>
+
+    <span class="text">Без контейнера занимает 100% ширины</span>
     <VueBaseInput
-    v-model="firstName"
-    label="Текствое описание"
-    emptyFieldText="Пустое поле"
-    errorFieldText="Недостаточно символов"
-    validFieldText="Данные валидны"
-    requiredField
-    />
+    class="input"/>
 
     <VueBaseInput
-    v-model="lastName"
-    label="Текствое описание"
-    />
+    class="input"
+    notificationText="Базовое уведомление"
+    notificationTheme="primary"/>
+
+    <div class="wrap">
+
+        <span class="text">Деактивированный инпут</span>
+        <VueBaseInput
+        class="input"
+        size="small"
+        disabled/>
+
+        <VueBaseInput
+        class="input"
+        size="medium"
+        disabled/>
+
+        <VueBaseInput
+        class="input"
+        size="large"
+        disabled/>
+
+    </div>
+
+    <div class="wrap bg-input-wrap">
+
+        <span class="text">В темной теме</span>
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        darkTheme
+        size="small"/>
+
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        darkTheme
+        size="small"
+        showPassword/>
+
+        <span class="text">Диактивированный</span>
+        <VueBaseInput
+        class="input"
+        label="Текствое описание"
+        darkTheme
+        size="small"
+        disabled/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Инпуты со стилестической отметкой на лейбле об обязательном вводе</span>
+        <VueBaseInput
+        class="input"
+        size="small"
+        label="Текствое описание"
+        fieldMark/>
+
+        <VueBaseInput
+        class="input"
+        size="medium"
+        label="Текствое описание"
+        fieldMark/>
+
+        <VueBaseInput
+        class="input"
+        size="large"
+        label="Текствое описание"
+        fieldMark/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Инпут с кнопкой внутри вставляемая через slot</span>
+        <vue-base-input
+        class="input"
+        size="small"
+        suffixElement>
+
+        <button class="button">Тест кнопка</button></vue-base-input>
+
+        <vue-base-input
+        class="input"
+        size="small"
+        prefixElement>
+
+        <button class="button">Тест кнопка</button></vue-base-input>
+
+        <vue-base-input
+        class="input"
+        size="medium">
+
+        <button class="button">Тест кнопка</button></vue-base-input>
+
+        <vue-base-input
+        class="input"
+        size="large">
+
+        <button class="button">Тест кнопка</button></vue-base-input>
+
+        <vue-base-input
+        class="input">
+
+        <button class="button">Тест кнопка</button></vue-base-input>
+
+        <span class="text">Инпут с иконкой внутри вставляемая через slot</span>
+        <vue-base-input
+        class="input"
+        size="small">
+
+        <img src="src/components/icons/Search.svg"></vue-base-input>
+
+        <vue-base-input
+        class="input"
+        size="small"
+        prefixElement>
+
+        <img src="src/components/icons/Search.svg"></vue-base-input>
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Импут с атрибутом showPassword показывающий или скрывающий пароль</span>
+        <VueBaseInput
+        class="input"
+        size="small"
+        v-model="value"
+        type="password"
+        showPassword/>
+
+        <VueBaseInput
+        class="input"
+        size="small"
+        type="text"
+        v-model="value1"
+        showPassword/>
+
+    </div>
+
+    <vue-base-input
+    class="input"
+    notificationText="Базовое уведомление"
+    notificationTheme="primary">
+
+    <button class="button">Тест кнопка</button>
+    </vue-base-input>
+
 </template>
 
 <script setup>
 import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
-import VueBaseInput from '../components/GUI/VueBaseInput.vue'
+import VueBaseInput from '@GUI/input/VueBaseInput.vue'
+
 import { ref } from 'vue'
 
 function testClick() {
     console.log('Клик!')
 }
 
-const firstName = ref('')
-const lastName = ref('')
+const value = ref('')
+const value1 = ref('')
+
 </script>
 
 <style scoped>
@@ -283,5 +505,36 @@ const lastName = ref('')
 
 .bg-wrap_third {
     background-color: #000000;
+}
+
+.wrap {
+    width: 650px;
+}
+
+.wrap:not(:first-child) {
+    margin: 50px 0;
+}
+
+.bg-input-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #000000;
+    height: 350px;
+    flex-flow: column wrap;
+}
+
+.input {
+    margin: 0 0 10px;
+}
+
+.text {
+    display: inline-block;
+    color: blueviolet;
+    margin-bottom: 10px;
+}
+
+.button {
+    border: none;
 }
 </style>
