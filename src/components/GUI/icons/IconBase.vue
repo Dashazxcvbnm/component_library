@@ -1,53 +1,59 @@
-<!-- eslint-disable no-unused-vars -->
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" 
-      :width="width" 
-      :height="height" 
-      viewBox="0 0 20 20" 
-      :aria-labelledby="iconName" 
-      role="presentation"
-    >
-      <title :id="iconName"> {{ iconName }} icon</title>
-      <g :fill="fill">
-        <slot />
-      </g>
-    </svg>
-  </template>
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+    :width="width" 
+    :height="height" 
+    role="presentation"
+  >
+  <use :href="symbolId" :fill="color" />
+  </svg>
+
+</template>
 
 <script setup>
+import { computed } from 'vue';
 
+const props = defineProps({
 
-defineProps({
+  prefix: {
+    type: String,
+    default: 'icon',
+  },
 
-  iconName: {
-    type: String
+  name: {
+    type: String,
+    required: true,
   },
 
   width: {
     type: [Number, String],
-    default: 18
+    default: 20
   },
 
   height: {
     type: [Number, String],
-    default: 18
+    default: 20
   },
 
-  fill: {
+  color: {
     type: String,
     default: 'currentColor'
   }
 
 })
 
+
+const symbolId = computed(() => {
+  return `#${props.prefix}-${props.name}`
+})
+    
 </script>
-  
+
 <style scoped>
 
 svg {
-    display: inline-block;
-    vertical-align: baseline;
-    margin-bottom: -2px;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-bottom: -2px;
 }
 
 </style>

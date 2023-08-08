@@ -20,25 +20,10 @@
                     :class="[showPassword ? 'password-control_icon-show' : '', 'password-control']"
                     v-if="showPassword"
                     @click.prevent="showOrHidePassword">
-                       
-                      <icon-base
-                      :class="[darkTheme ? 'password-control_icon-show_color_mode_dark' : 'password-control_icon-show_color']"
-                      v-if="showPasswordIcon"
-                      width="20"
-                      height="20"
-                      icon-name="eye-hide"
-                      viewBox="0 0 576 512">
-                      <icon-eye-hide />
-                      </icon-base>
 
                       <icon-base
                       :class="[darkTheme ? 'password-control_icon-show_color_mode_dark' : 'password-control_icon-show_color']"
-                      v-if="!showPasswordIcon"
-                      width="20"
-                      height="20"
-                      icon-name="eye-show"
-                      viewBox="0 0 576 512">
-                      <icon-eye-show />
+                      :name="iconForPassword">
                       </icon-base>
 
                     </div>
@@ -54,7 +39,7 @@
                 :value="modelValue"
                 v-bind="attributes"
                 @input="$emit('update:modelValue', $event.target.value)" />
-                
+
             </div>
 
             <div :class="[notificationStyle, notificationStaticStyle, inputSize]">
@@ -68,19 +53,14 @@
                 v-else-if="notificationTheme === 'success'"
                 width="11"
                 height="10"
-                icon-name="check-mark"
-                viewBox="0 0 11 10"
-                fill="none">
-                <icon-check-mark />
+                name="CheckMark">
                 </icon-base>
 
                 <icon-base
                 v-else-if="notificationTheme === 'danger'"
                 width="11"
                 height="10"
-                icon-name="cross"
-                viewBox="0 0 11 10">
-                <icon-cross />
+                name="Cross">
                 </icon-base>
 
             </div>
@@ -92,10 +72,6 @@
 
 <script setup>
 import IconBase from '@GUI/icons/IconBase.vue'
-import IconEyeHide from '@GUI/icons/IconEyeHide.vue'
-import IconEyeShow from '@GUI/icons/IconEyeShow.vue'
-import IconCheckMark from '@GUI/icons/IconCheckMark.vue'
-import IconCross from '@GUI/icons/IconCross.vue'
 
 import { ref, computed, onMounted } from 'vue';
 
@@ -273,6 +249,10 @@ const showOrHidePassword = () => {
     return input.value.setAttribute("type", "password");
   }
 }
+
+let iconForPassword = computed(() => {
+  return showPasswordIcon.value ? 'IconEyeHide'  : 'IconEyeShow'
+})
 
 onMounted(() => {
   paddingForPlaceholder();
