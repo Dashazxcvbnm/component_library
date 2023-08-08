@@ -457,6 +457,7 @@
     <button class="button">Тест кнопка</button>
     </vue-base-input>
 
+
 </template>
 
 <script setup>
@@ -466,7 +467,7 @@ import VueBaseInput from '@GUI/input/VueBaseInput.vue'
 import { ref } from 'vue'
 
 function testClick() {
-    console.log('Клик!')
+  console.log('Клик!')
 }
 
 const value = ref('')
