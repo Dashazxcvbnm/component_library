@@ -466,12 +466,82 @@
     <button class="button">Тест кнопка</button>
     </vue-base-input>
 
+    <div class="wrap">
+
+        <span class="">Checkboxes</span>
+        
+        <vue-base-checkbox
+        label="Checkbox 1"
+        v-model:checked="checkedActive1"
+        id="checkbox1"/>
+
+        <VueBaseCheckbox
+        label="Checkbox 2"
+        v-model:checked="checkedActive2"
+        id="checkbox2"/>
+
+        <VueBaseCheckbox
+        label="CHECKBOX"
+        v-model:checked="checkedActive3"
+        id="checkbox3"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Диактивированный чекбокс</span>
+        <VueBaseCheckbox
+        label="Checkbox 4"
+        v-model:checked="checkedActive4"
+        id="checkbox4"
+        disabled/>
+
+        <VueBaseCheckbox
+        label="Checkbox 5"
+        v-model:checked="checkedActive5"
+        id="checkbox5"
+        disabled/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">default(самый маленький) чекбокс</span>
+        <VueBaseCheckbox
+        label="Checkbox 6"
+        v-model:checked="checkedActive6"
+        id="checkbox6"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">medium чекбокс</span>
+        <VueBaseCheckbox
+        label="Checkbox 7"
+        v-model:checked="checkedActive7"
+        id="checkbox7"
+        size="medium"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">large чекбокс</span>
+        <VueBaseCheckbox
+        label="Checkbox 8"
+        v-model:checked="checkedActive8"
+        id="checkbox8"
+        size="large"/>
+
+    </div>
 
 </template>
 
 <script setup>
 import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
 import VueBaseInput from '@GUI/input/VueBaseInput.vue'
+import VueBaseCheckbox from '@GUI/checkbox/VueBaseCheckbox.vue';
 
 import { ref } from 'vue'
 
@@ -482,6 +552,14 @@ function testClick() {
 const value = ref('')
 const value1 = ref('')
 
+const checkedActive1 = ref(true)
+const checkedActive2 = ref(true)
+const checkedActive3 = ref(false)
+const checkedActive4 = ref(true)
+const checkedActive5 = ref(false)
+const checkedActive6 = ref(true)
+const checkedActive7 = ref(true)
+const checkedActive8 = ref(true)
 </script>
 
 <style scoped>
