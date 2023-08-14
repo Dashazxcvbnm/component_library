@@ -400,25 +400,29 @@
 
         <vue-base-input
         class="input"
-        size="medium">
+        size="medium"
+        suffixElement>
 
         <button class="button">Тест кнопка</button></vue-base-input>
 
         <vue-base-input
         class="input"
-        size="large">
+        size="large"
+        suffixElement>
 
         <button class="button">Тест кнопка</button></vue-base-input>
 
         <vue-base-input
-        class="input">
+        class="input"
+        suffixElement>
 
         <button class="button">Тест кнопка</button></vue-base-input>
 
         <span class="text">Инпут с иконкой внутри вставляемая через slot</span>
         <vue-base-input
         class="input"
-        size="small">
+        size="small"
+        suffixElement>
 
         <img src="src/components/icons/Search.svg"></vue-base-input>
 
@@ -444,6 +448,8 @@
         class="input"
         size="small"
         type="text"
+        notification-text="Предупреждение"
+        notificationTheme="danger"
         v-model="value1"
         showPassword/>
 
@@ -452,7 +458,8 @@
     <vue-base-input
     class="input"
     notificationText="Базовое уведомление"
-    notificationTheme="primary">
+    notificationTheme="primary"
+    suffixElement>
 
     <button class="button">Тест кнопка</button>
     </vue-base-input>

@@ -11,8 +11,18 @@
 
         <div :class="[{ 'inner-input_wrapper_position': label && !size }]">
 
-            <div :class="[prefixElement ? 'slot-container_prefix' : 'slot-container_suffix', 'slot-container']">
-                <div class="slot_wrapper" ref="slotWrapper">
+            <div :class="[{ 'slot-container_prefix': prefixElement },
+            { 'slot-container_suffix': suffixElement || showPassword },
+            (prefixElement || suffixElement || showPassword) && darkTheme ? 'slot-container_mode_dark' : '',
+            (prefixElement && notificationTheme === 'success') ? 'slot-container_prefix_success' : '',
+            (prefixElement && notificationTheme === 'danger') ? 'slot-container_prefix_danger' : '',
+            ((showPassword || suffixElement) && notificationTheme === 'success') ? 'slot-container_suffix_success' : '',
+            ((showPassword || suffixElement) && notificationTheme === 'danger') ? 'slot-container_suffix_danger' : '',
+            'slot-container', inputSize]">
+
+                <div v-if="showPassword || prefixElement || suffixElement"
+                :class="[showPassword || suffixElement ? 'slot_wrapper_suffix' : '',
+                { 'slot_wrapper_prefix': prefixElement }, 'slot_wrapper']">
 
                     <slot />
 
@@ -33,7 +43,9 @@
                 <input
                 :class="[{ 'input-form_mode_dark': darkTheme },
                 { 'input-form_mode_disabled': disabled },
-                inputSize, notificationBorderStyle, 'input-form']"
+                { 'notification_field_prefix': prefixElement },
+                { 'notification_field_suffix': suffixElement || showPassword },
+                notificationBorderStyle, 'input-form']"
                 ref="input"
                 :id="idForInput"
                 :value="modelValue"
@@ -42,7 +54,8 @@
 
             </div>
 
-            <div :class="[notificationStyle, notificationStaticStyle, inputSize]">
+            <div :class="[notificationStyle, notificationStaticStyle, inputSize,
+            prefixElement ? 'input-form_prefix' : 'input-form_suffix']">
                 <span class="notification_text">
                     {{ notificationText }}
                 </span>
@@ -209,32 +222,7 @@ const uniqueId = computed(() => {
 
 let idForInput = ref(`input_${uniqueId.value}`)
 
-const slotWrapper = ref(null)
 const input = ref(null)
-
-const paddingForPlaceholder = (count = 0) => {
-  if (count > 3) {
-    return
-  }
-
-  const slotDomWidth = window.getComputedStyle(slotWrapper.value).width
-
-  if (Number(slotDomWidth.replace("px", '')) !== 0) {
-    if (props.prefixElement) {
-      input.value.style.paddingLeft = `calc(${slotDomWidth} + 20px)`
-      return
-    }
-    else if (props.suffixElement || props.showPassword) {
-      input.value.style.paddingRight = `calc(${slotDomWidth} + 20px)`
-      return
-    }
-
-  } else {
-    setTimeout(() => {
-      return paddingForPlaceholder(count + 1)
-    }, 30)
-  }
-}
 
 const showPasswordIcon = ref(false);
 
@@ -251,11 +239,10 @@ const showOrHidePassword = () => {
 }
 
 let iconForPassword = computed(() => {
-  return showPasswordIcon.value ? 'IconEyeHide'  : 'IconEyeShow'
+  return showPasswordIcon.value ? 'IconEyeShow'  : 'IconEyeHide'
 })
 
 onMounted(() => {
-  paddingForPlaceholder();
   showPasswordIcon.value = props.showPassword && input.value.type === 'password'
 })
 
@@ -298,8 +285,17 @@ onMounted(() => {
     border: 1px solid $basic-grey;
     width: 100%;
     min-height: 44px;
+    min-width: 50%;
     padding-left: 12px;
     @include text-overflow-style;
+
+    &_prefix {
+      border-left: none;
+    }
+
+    &_suffix {
+      border-right: none;
+    }
 }
 
 .input-form::placeholder {
@@ -334,6 +330,7 @@ onMounted(() => {
     &_disabled {
         filter: opacity(50%);
         border: 1px solid $basic-grey;
+        cursor: not-allowed;
     }
 }
 
@@ -395,25 +392,65 @@ onMounted(() => {
         background-color: $light-red;
         display: flex;
     }
-}
-
-.slot-container {
-    position: relative;
-    display: flex;
-    align-items: center;
 
     &_suffix {
-        justify-content: flex-end;
+      border-right: none;
     }
 
     &_prefix {
-        justify-content: flex-start;
+      border-left: none;
+    }
+}
+
+.slot-container {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    overflow: hidden;
+    overflow-x: auto;
+
+    &_suffix {
+      box-sizing: border-box;
+      border: 1px solid $basic-grey;
+      border-left: none;
+
+      &_danger {
+        border-color: $basic-red;
+      }
+
+      &_success {
+        border-color: $basic-green;
+      }
+    }
+
+    &_prefix {
+      box-sizing: border-box;
+      border: 1px solid $basic-grey;
+      border-right: none;
+
+      &_danger {
+        border-color: $basic-red;
+      }
+
+      &_success {
+        border-color: $basic-green;
+      }
+    }
+
+    &_mode_dark {
+      border-color: $basic-white;
     }
 }
 
 .slot_wrapper {
-    position: absolute;
-    margin: 0 10px;
+    &_prefix {
+      margin-left: 10px;
+    }
+
+    &_suffix {
+      order: 1;
+      margin: 0 10px;
+    }
 }
 
 .password-control {
