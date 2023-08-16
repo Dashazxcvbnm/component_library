@@ -472,17 +472,17 @@
         
         <vue-base-checkbox
         label="Checkbox 1"
-        v-model:checked="checkedActive1"
+        v-model="checkedActive1"
         id="checkbox1"/>
 
         <VueBaseCheckbox
         label="Checkbox 2"
-        v-model:checked="checkedActive2"
+        v-model="checkedActive2"
         id="checkbox2"/>
 
         <VueBaseCheckbox
         label="CHECKBOX"
-        v-model:checked="checkedActive3"
+        v-model="checkedActive3"
         id="checkbox3"/>
 
     </div>
@@ -492,13 +492,13 @@
         <span class="text">Диактивированный чекбокс</span>
         <VueBaseCheckbox
         label="Checkbox 4"
-        v-model:checked="checkedActive4"
+        v-model="checkedActive4"
         id="checkbox4"
         disabled/>
 
         <VueBaseCheckbox
         label="Checkbox 5"
-        v-model:checked="checkedActive5"
+        v-model="checkedActive5"
         id="checkbox5"
         disabled/>
 
@@ -509,7 +509,7 @@
         <span class="text">default(самый маленький) чекбокс</span>
         <VueBaseCheckbox
         label="Checkbox 6"
-        v-model:checked="checkedActive6"
+        v-model="checkedActive6"
         id="checkbox6"/>
 
     </div>
@@ -519,7 +519,7 @@
         <span class="text">medium чекбокс</span>
         <VueBaseCheckbox
         label="Checkbox 7"
-        v-model:checked="checkedActive7"
+        v-model="checkedActive7"
         id="checkbox7"
         size="medium"/>
 
@@ -530,7 +530,7 @@
         <span class="text">large чекбокс</span>
         <VueBaseCheckbox
         label="Checkbox 8"
-        v-model:checked="checkedActive8"
+        v-model="checkedActive8"
         id="checkbox8"
         size="large"/>
 
@@ -559,7 +559,7 @@ const checkedActive4 = ref(true)
 const checkedActive5 = ref(false)
 const checkedActive6 = ref(true)
 const checkedActive7 = ref(true)
-const checkedActive8 = ref(true)
+const checkedActive8 = ref(false)
 </script>
 
 <style scoped>

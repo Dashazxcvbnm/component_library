@@ -5,7 +5,8 @@
       class="checkbox-input"
       type="checkbox"
       v-bind="attributes"
-      @change="$emit('update:checked', $event.target.checked)">
+      :checked="modelValue"
+      @change="$emit('update:modelValue', $event.target.checked)">
       
       <label
       :class="[disabled ? 'checkbox-label_disabled' : '', 'checkbox-label', checkboxSize]"
@@ -49,11 +50,12 @@ const props = defineProps({
 
   size: {
     validator(value) {
-      return ['medium', 'large'].includes(value)
-    }
+      return ['default', 'medium', 'large'].includes(value)
+    },
+    default: 'default'
   },
 
-  checked: {
+  modelValue: {
     type: Boolean,
     default: false
   },
@@ -65,13 +67,12 @@ const props = defineProps({
 
 })
 
-defineEmits(['update:checked'])
+defineEmits(['update:modelValue'])
 
 const attributes = {
   value: props.value,
   id: props.id,
   name: props.name,
-  checked: props.checked,
   disabled: props.disabled,
 }
 
