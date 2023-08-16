@@ -12,16 +12,16 @@
         <div :class="[{ 'inner-input_wrapper_position': label && !size }]">
 
             <div :class="[{ 'slot-container_prefix': prefixElement },
-            { 'slot-container_suffix': suffixElement || showPassword },
-            (prefixElement || suffixElement || showPassword) && darkTheme ? 'slot-container_mode_dark' : '',
-            (prefixElement && notificationTheme === 'success') ? 'slot-container_prefix_success' : '',
-            (prefixElement && notificationTheme === 'danger') ? 'slot-container_prefix_danger' : '',
-            ((showPassword || suffixElement) && notificationTheme === 'success') ? 'slot-container_suffix_success' : '',
-            ((showPassword || suffixElement) && notificationTheme === 'danger') ? 'slot-container_suffix_danger' : '',
+            { 'slot-container_suffix': lastElement },
+            inputItems && darkTheme ? 'slot-container_mode_dark' : '',
+            (prefixElement && notificationSuccessTheme) ? 'slot-container_prefix_success' : '',
+            (prefixElement && notificationDangerTheme) ? 'slot-container_prefix_danger' : '',
+            (lastElement && notificationSuccessTheme) ? 'slot-container_suffix_success' : '',
+            (lastElement && notificationDangerTheme) ? 'slot-container_suffix_danger' : '',
             'slot-container', inputSize]">
 
-                <div v-if="showPassword || prefixElement || suffixElement"
-                :class="[showPassword || suffixElement ? 'slot_wrapper_suffix' : '',
+                <div v-if="inputItems"
+                :class="[lastElement ? 'slot_wrapper_suffix' : '',
                 { 'slot_wrapper_prefix': prefixElement }, 'slot_wrapper']">
 
                     <slot />
@@ -44,7 +44,7 @@
                 :class="[{ 'input-form_mode_dark': darkTheme },
                 { 'input-form_mode_disabled': disabled },
                 { 'notification_field_prefix': prefixElement },
-                { 'notification_field_suffix': suffixElement || showPassword },
+                { 'notification_field_suffix': lastElement },
                 notificationBorderStyle, 'input-form']"
                 ref="input"
                 :id="idForInput"
@@ -63,14 +63,14 @@
                 <img v-if="iconUrlForNotification" :src="(`${iconUrlForNotification}`)">
 
                 <icon-base
-                v-else-if="notificationTheme === 'success'"
+                v-else-if="notificationSuccessTheme"
                 width="11"
                 height="10"
                 name="CheckMark">
                 </icon-base>
 
                 <icon-base
-                v-else-if="notificationTheme === 'danger'"
+                v-else-if="notificationDangerTheme"
                 width="11"
                 height="10"
                 name="Cross">
@@ -84,7 +84,8 @@
 </template>
 
 <script setup>
-import IconBase from '@GUI/icons/IconBase.vue'
+import IconBase from '@GUI/icons/IconBase.vue';
+import uniqueId from '@/helpers/uniqueID.js';
 
 import { ref, computed, onMounted } from 'vue';
 
@@ -216,11 +217,23 @@ const notificationBorderStyle = ref(`input-form_border_${props.notificationTheme
 
 const markForLabel = ref('label_mark');
 
-const uniqueId = computed(() => {
-  return (Math.round(Math.random() * 1000)) + '_' + Date.now()
+const lastElement = computed(() => {
+  return props.suffixElement || props.showPassword
 })
 
-let idForInput = ref(`input_${uniqueId.value}`)
+const inputItems = computed(() => {
+  return props.prefixElement || lastElement.value
+})
+
+const notificationSuccessTheme = computed(() => {
+  return props.notificationTheme === 'success'
+})
+
+const notificationDangerTheme = computed(() => {
+  return props.notificationTheme === 'danger'
+})
+
+let idForInput = ref(`input_${uniqueId()}`)
 
 const input = ref(null)
 
