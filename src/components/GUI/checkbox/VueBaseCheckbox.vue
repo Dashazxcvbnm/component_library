@@ -9,7 +9,7 @@
       @change="$emit('update:modelValue', $event.target.checked)">
       
       <label
-      :class="[disabled ? 'checkbox-label_disabled' : '', 'checkbox-label', checkboxSize]"
+      :class="[{ 'checkbox-label_disabled': disabled }, 'checkbox-label', checkboxSize]"
       :for="id">
 
       <IconBase
