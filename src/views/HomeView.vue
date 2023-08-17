@@ -442,6 +442,8 @@
         size="small"
         v-model="value"
         type="password"
+        notification-text="Предупреждение"
+        notificationTheme="success"
         showPassword/>
 
         <VueBaseInput

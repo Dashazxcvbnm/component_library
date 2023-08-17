@@ -12,22 +12,22 @@
         <div :class="[{ 'inner-input_wrapper_position': label && !size }]">
 
             <div :class="[{ 'slot-container_prefix': prefixElement },
-            { 'slot-container_suffix': lastElement },
-            inputItems && darkTheme ? 'slot-container_mode_dark' : '',
-            (prefixElement && notificationSuccessTheme) ? 'slot-container_prefix_success' : '',
-            (prefixElement && notificationDangerTheme) ? 'slot-container_prefix_danger' : '',
-            (lastElement && notificationSuccessTheme) ? 'slot-container_suffix_success' : '',
-            (lastElement && notificationDangerTheme) ? 'slot-container_suffix_danger' : '',
+            { 'slot-container_suffix': isLastElementExist },
+            { 'slot-container_mode_dark' : isinputItemsExist && darkTheme },
+            { 'slot-container_prefix_success': prefixElement && isNotificationSuccessThemeExist },
+            { 'slot-container_prefix_danger': prefixElement && isNotificationDangerThemeExist },
+            { 'slot-container_suffix_success': isLastElementExist && isNotificationSuccessThemeExist },
+            { 'slot-container_suffix_danger': isLastElementExist && isNotificationDangerThemeExist },
             'slot-container', inputSize]">
 
-                <div v-if="inputItems"
-                :class="[lastElement ? 'slot_wrapper_suffix' : '',
+                <div v-if="isinputItemsExist"
+                :class="[{ 'slot_wrapper_suffix': isLastElementExist },
                 { 'slot_wrapper_prefix': prefixElement }, 'slot_wrapper']">
 
                     <slot />
 
                     <div
-                    :class="[showPassword ? 'password-control_icon-show' : '', 'password-control']"
+                    :class="[{ 'password-control_icon-show': showPassword }, 'password-control']"
                     v-if="showPassword"
                     @click.prevent="showOrHidePassword">
 
@@ -44,7 +44,7 @@
                 :class="[{ 'input-form_mode_dark': darkTheme },
                 { 'input-form_mode_disabled': disabled },
                 { 'notification_field_prefix': prefixElement },
-                { 'notification_field_suffix': lastElement },
+                { 'notification_field_suffix': isLastElementExist },
                 notificationBorderStyle, 'input-form']"
                 ref="input"
                 :id="idForInput"
@@ -63,14 +63,14 @@
                 <img v-if="iconUrlForNotification" :src="(`${iconUrlForNotification}`)">
 
                 <icon-base
-                v-else-if="notificationSuccessTheme"
+                v-else-if="isNotificationSuccessThemeExist"
                 width="11"
                 height="10"
                 name="CheckMark">
                 </icon-base>
 
                 <icon-base
-                v-else-if="notificationDangerTheme"
+                v-else-if="isNotificationDangerThemeExist"
                 width="11"
                 height="10"
                 name="Cross">
@@ -217,23 +217,23 @@ const notificationBorderStyle = ref(`input-form_border_${props.notificationTheme
 
 const markForLabel = ref('label_mark');
 
-const lastElement = computed(() => {
+const isLastElementExist = computed(() => {
   return props.suffixElement || props.showPassword
 })
 
-const inputItems = computed(() => {
-  return props.prefixElement || lastElement.value
+const isinputItemsExist = computed(() => {
+  return props.prefixElement || isLastElementExist.value
 })
 
-const notificationSuccessTheme = computed(() => {
+const isNotificationSuccessThemeExist = computed(() => {
   return props.notificationTheme === 'success'
 })
 
-const notificationDangerTheme = computed(() => {
+const isNotificationDangerThemeExist = computed(() => {
   return props.notificationTheme === 'danger'
 })
 
-let idForInput = ref(`input_${uniqueId()}`)
+let idForInput = `input_${uniqueId()}`
 
 const input = ref(null)
 
