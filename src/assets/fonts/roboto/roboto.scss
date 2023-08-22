@@ -1,4 +1,19 @@
 @font-face {
-    font-family: 'Roboto';
-    src: local('Roboto Medium'), local('Roboto-Medium'), url('Robotomedium.woff2') format('woff2'), url('Robotomedium.woff') format('woff'), url('Robotomedium.ttf') format('truetype');
+    font-family: 'Roboto Medium';
+    font-weight: 500;
+    src: local('Roboto Medium'), 
+    local('Roboto-Medium'), 
+    url('Robotomedium.woff2') format('woff2'),
+    url('Robotomedium.woff') format('woff'),
+    url('Robotomedium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto Regular';
+    font-weight: 400;
+    src: local('Roboto'),
+    local('Roboto-Regular'),
+    url('Roboto.woff2') format('woff2'),
+    url('Roboto.woff') format('woff'),
+    url('Roboto.ttf') format('truetype');
 }

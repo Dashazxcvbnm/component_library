@@ -28,70 +28,70 @@
 import { computed, ref } from 'vue';
 
 const props = defineProps({
-    title: {
-        type: String,
-        default: 'Submit'
-    },
+  title: {
+    type: String,
+    default: 'Submit'
+  },
 
-    type: {
-        type: String,
-        default: 'button'
-    },
+  type: {
+    type: String,
+    default: 'button'
+  },
 
-    form: {
-        type: String
-    },
+  form: {
+    type: String
+  },
 
-    size: {
-        validator(value) {
-            return ['small', 'medium', 'large'].includes(value)
-        },
-        default: 'medium'
+  size: {
+    validator(value) {
+      return ['small', 'medium', 'large'].includes(value)
     },
+    default: 'medium'
+  },
 
-    appearance: {
-        validator(value) {
-            return ['editing', 'primary', 'main-black', 'main-white', 'transparent', 'transparent-white'].includes(value)
-        },
-        default: 'primary'
+  appearance: {
+    validator(value) {
+      return ['editing', 'primary', 'main-black', 'main-white', 'transparent', 'transparent-white'].includes(value)
     },
+    default: 'primary'
+  },
 
-    leftIcon: {
-        type: Boolean,
-        default: false
-    },
+  leftIcon: {
+    type: Boolean,
+    default: false
+  },
 
-    rightIcon: {
-        type: Boolean,
-        default: false
-    },
+  rightIcon: {
+    type: Boolean,
+    default: false
+  },
 
-    iconUrl: {
-        type: String,
-        default: ''
-    },
+  iconUrl: {
+    type: String,
+    default: ''
+  },
 
-    circle: {
-        type: Boolean,
-        default: false
-    },
+  circle: {
+    type: Boolean,
+    default: false
+  },
 
-    disabled: {
-        type: Boolean,
-        default: false
-    },
+  disabled: {
+    type: Boolean,
+    default: false
+  },
 
-    autofocus: {
-        type: Boolean,
-        default: false
-    }
+  autofocus: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const buttonStyle = ref(`button_appearance_${props.appearance}`)
 const buttonSize = ref(`button-wrapper_size_${props.size}`)
 
 const buttonTitle = computed(() => {
-    return (props.size === 'small' && props.title === 'Submit') ? 'Edit' : props.title
+  return (props.size === 'small' && props.title === 'Submit') ? 'Edit' : props.title
 })
 
 </script>

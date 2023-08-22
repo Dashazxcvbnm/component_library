@@ -3,6 +3,10 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
+import viteSvgIconsPlugin  from 'vite-plugin-svg-icons'
+import path from 'path';
+import process from 'node:process';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   css: {
@@ -19,6 +23,10 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    viteSvgIconsPlugin({
+      iconDirs: [path.resolve(process.cwd(), 'src/components/icons')],
+      symbolId: 'icon-[dir]-[name]',
+    }),
   ],
   resolve: {
     alias: {
