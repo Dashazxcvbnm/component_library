@@ -536,14 +536,35 @@
 
     </div>
 
+    <div class="wrap">
+
+        <span class="text">Группа чек-боксов в горизонтальном расположении: {{ selectedDogsShow }}</span>
+        <VueBaseCheckboxGroup
+        name="dogs"
+        size="large"
+        direcrion="horizontal"
+        v-model="selectedDogs"
+        :buttons="listOfDogs"
+        />
+
+        <span class="text">Группа чек-боксовв в вертикальном (по умолчанию) расположении: {{ selectedCatsShow }}</span>
+        <VueBaseCheckboxGroup
+        name="cats"
+        size="medium"
+        v-model="selectedCats"
+        :buttons="listOfCats"/>
+
+    </div>
+
 </template>
 
 <script setup>
 import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
 import VueBaseInput from '@GUI/input/VueBaseInput.vue'
 import VueBaseCheckbox from '@GUI/checkbox/VueBaseCheckbox.vue';
+import VueBaseCheckboxGroup from '../components/GUI/checkbox-group/VueBaseCheckboxGroup.vue';
 
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 function testClick() {
   console.log('Клик!')
@@ -560,6 +581,31 @@ const checkedActive5 = ref(false)
 const checkedActive6 = ref(true)
 const checkedActive7 = ref(true)
 const checkedActive8 = ref(false)
+
+const listOfDogs = ref([
+  {label: 'Corgi', id: '1' , checked: true },
+  {label: 'Dalmatian', id: '2', checked: true },
+  {label: 'Boxer', id: '3', checked: false },
+  {label: 'Beagle', id: '4', checked: true, disabled: true }
+])
+
+const listOfCats = ref([
+  {label: 'Maine-Coon', id: '5' , checked: true },
+  {label: 'Sphinx', id: '6', checked: true },
+  {label: 'Munchkin', id: '7', checked: false },
+  {label: 'Burma', id: '8', checked: true, disabled: true }
+])
+
+const selectedDogs = ref([])
+const selectedCats = ref([])
+
+const selectedCatsShow = computed(()=> {
+  return selectedCats.value.filter((value)=> value)
+})
+
+const selectedDogsShow = computed(()=> {
+  return selectedDogs.value.filter((value)=> value)
+})
 </script>
 
 <style scoped>
