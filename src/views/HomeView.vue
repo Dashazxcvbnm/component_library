@@ -538,7 +538,7 @@
 
     <div class="wrap">
 
-        <span class="text">Группа чек-боксов в горизонтальном расположении: {{ selectedDogsShow }}</span>
+        <span class="text">Группа чек-боксов в горизонтальном расположении: {{ selectedDogs }}</span>
         <VueBaseCheckboxGroup
         name="dogs"
         size="large"
@@ -547,7 +547,7 @@
         :buttons="listOfDogs"
         />
 
-        <span class="text">Группа чек-боксовв в вертикальном (по умолчанию) расположении: {{ selectedCatsShow }}</span>
+        <span class="text">Группа чек-боксовв в вертикальном (по умолчанию) расположении: {{ selectedCats }}</span>
         <VueBaseCheckboxGroup
         name="cats"
         size="medium"
@@ -564,7 +564,7 @@ import VueBaseInput from '@GUI/input/VueBaseInput.vue'
 import VueBaseCheckbox from '@GUI/checkbox/VueBaseCheckbox.vue';
 import VueBaseCheckboxGroup from '../components/GUI/checkbox-group/VueBaseCheckboxGroup.vue';
 
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 function testClick() {
   console.log('Клик!')
@@ -583,29 +583,21 @@ const checkedActive7 = ref(true)
 const checkedActive8 = ref(false)
 
 const listOfDogs = ref([
-  {label: 'Corgi', id: '1' , checked: true },
-  {label: 'Dalmatian', id: '2', checked: true },
-  {label: 'Boxer', id: '3', checked: false },
-  {label: 'Beagle', id: '4', checked: true, disabled: true }
+  {label: 'Корги', value: 'Corgi', id: '1' , checked: true},
+  {label: 'Долматинец', value: 'Dalmatian', id: '2', checked: true },
+  {label: 'Боксер', value: 'Boxer', id: '3', checked: false },
+  {label: 'Бигль', value: 'Beagle', id: '4', checked: true, disabled: true }
 ])
 
 const listOfCats = ref([
-  {label: 'Maine-Coon', id: '5' , checked: true },
-  {label: 'Sphinx', id: '6', checked: true },
-  {label: 'Munchkin', id: '7', checked: false },
-  {label: 'Burma', id: '8', checked: true, disabled: true }
+  {label: 'Maine-Coon', value: 'Maine-Coon', id: '5' , checked: true },
+  {label: 'Sphinx', value: 'Sphinx', id: '6', checked: true },
+  {label: 'Munchkin', value: 'Munchkin', id: '7', checked: false },
+  {label: 'Burma', value: 'Burma', id: '8', checked: true, disabled: true }
 ])
 
 const selectedDogs = ref([])
 const selectedCats = ref([])
-
-const selectedCatsShow = computed(()=> {
-  return selectedCats.value.filter((value)=> value)
-})
-
-const selectedDogsShow = computed(()=> {
-  return selectedDogs.value.filter((value)=> value)
-})
 </script>
 
 <style scoped>

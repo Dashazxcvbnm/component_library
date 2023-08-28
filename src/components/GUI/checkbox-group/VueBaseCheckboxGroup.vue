@@ -7,7 +7,7 @@
     :class="[{'checkbox_wrapper': direcrion === 'horizontal'}]"
     :label="option.label"
     :id="option.id"
-    :value="option.label"
+    :value="option.value"
     :disabled="option.disabled"
     v-bind="attributes"
     v-model="option.checked"/>
@@ -25,7 +25,7 @@ const props = defineProps({
     type: Array,
     required: true,
     validator(value) {
-      return value.every((option) => Object.keys(option).includes('label' && 'id' && 'checked'))
+      return value.every((option) => Object.keys(option).includes('label' && 'id' && 'checked' && 'value'))
     }
   },
 
@@ -60,15 +60,15 @@ const attributes = {
   size: props.size,
   name: props.name
 }
+
 const buttonsCopy = reactive(JSON.parse(JSON.stringify(props.buttons)))
 
 watch(buttonsCopy, () => {
   emits('update:modelValue', buttonsCopy.map((button) => {
     if(button.checked) {
-      return button.label
+      return button.value
     }
-    return
-  })
+  }).filter((value) => value)
   )
 })
 
