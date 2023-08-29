@@ -536,12 +536,33 @@
 
     </div>
 
+    <div class="wrap">
+
+        <span class="text">Группа чек-боксов в горизонтальном расположении: {{ selectedDogs }}</span>
+        <VueBaseCheckboxGroup
+        name="dogs"
+        size="large"
+        direcrion="horizontal"
+        v-model="selectedDogs"
+        :buttons="listOfDogs"
+        />
+
+        <span class="text">Группа чек-боксовв в вертикальном (по умолчанию) расположении: {{ selectedCats }}</span>
+        <VueBaseCheckboxGroup
+        name="cats"
+        size="medium"
+        v-model="selectedCats"
+        :buttons="listOfCats"/>
+
+    </div>
+
 </template>
 
 <script setup>
 import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
 import VueBaseInput from '@GUI/input/VueBaseInput.vue'
 import VueBaseCheckbox from '@GUI/checkbox/VueBaseCheckbox.vue';
+import VueBaseCheckboxGroup from '../components/GUI/checkbox-group/VueBaseCheckboxGroup.vue';
 
 import { ref } from 'vue'
 
@@ -560,6 +581,23 @@ const checkedActive5 = ref(false)
 const checkedActive6 = ref(true)
 const checkedActive7 = ref(true)
 const checkedActive8 = ref(false)
+
+const listOfDogs = ref([
+  {label: 'Корги', value: 'Corgi', id: '1' , checked: true},
+  {label: 'Долматинец', value: 'Dalmatian', id: '2', checked: true },
+  {label: 'Боксер', value: 'Boxer', id: '3', checked: false },
+  {label: 'Бигль', value: 'Beagle', id: '4', checked: true, disabled: true }
+])
+
+const listOfCats = ref([
+  {label: 'Maine-Coon', value: 'Maine-Coon', id: '5' , checked: true },
+  {label: 'Sphinx', value: 'Sphinx', id: '6', checked: true },
+  {label: 'Munchkin', value: 'Munchkin', id: '7', checked: false },
+  {label: 'Burma', value: 'Burma', id: '8', checked: true, disabled: true }
+])
+
+const selectedDogs = ref([])
+const selectedCats = ref([])
 </script>
 
 <style scoped>
