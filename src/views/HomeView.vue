@@ -468,7 +468,7 @@
 
     <div class="wrap">
 
-        <span class="">Checkboxes</span>
+        <span class="text">Checkboxes</span>
         
         <vue-base-checkbox
         label="Checkbox 1"
@@ -536,12 +536,136 @@
 
     </div>
 
+    <div class="wrap">
+
+        <span class="text">Radio buttons: {{ selectedRadio1 }}</span>
+        <VueBaseRadio
+        label="Radio 1"
+        value="Radio1"
+        id="1"
+        name="radio1"
+        v-model="selectedRadio1"/>
+
+        <VueBaseRadio
+        label="RADIO 2"
+        value="Radio2"
+        id=2
+        name="radio1"
+        v-model="selectedRadio1"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Диактивированные radio</span>
+        <VueBaseRadio
+        label="Radio 3"
+        value="Radio3"
+        id="3"
+        name="radio2"
+        disabled
+        v-model="selectedRadio2"/>
+
+        <VueBaseRadio
+        label="Radio 4"
+        value="Radio4"
+        id=4
+        name="radio2"
+        checked
+        disabled
+        v-model="selectedRadio2"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">default(самый маленький) size</span>
+        <VueBaseRadio
+        label="Radio 5"
+        value="Radio5"
+        id="5"
+        name="radio3"
+        v-model="selectedRadio3"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">medium size</span>
+        <VueBaseRadio
+        label="Radio 6"
+        value="Radio6"
+        id="6"
+        name="radio4"
+        size="medium"
+        v-model="selectedRadio4"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">large size</span>
+        <VueBaseRadio
+        label="Radio 7"
+        value="Radio7"
+        id="7"
+        name="radio5"
+        size="large"
+        v-model="selectedRadio5"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Radio с содержимым slot</span>
+        <vue-base-radio
+        value="Radio8"
+        id="8"
+        name="radio6"
+        size="large"
+        v-model="selectedRadio6">
+
+        <label for="8" class="radio-label_text">Radio 8</label>
+
+        </vue-base-radio>
+
+        <vue-base-radio
+        label="Radio 9"
+        value="Radio9"
+        id="9"
+        name="radio6"
+        size="large"
+        v-model="selectedRadio6">
+
+        <icon-base
+        name="CatPaw"/>
+
+        </vue-base-radio>
+
+        <vue-base-radio
+        value="Radio10"
+        id="10"
+        name="radio6"
+        size="large"
+        v-model="selectedRadio6">
+
+        <icon-base
+        name="CatPaw"
+        class="radio-icon"
+        color="coral"/>
+
+        </vue-base-radio>
+
+    </div>
+
 </template>
 
 <script setup>
 import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
-import VueBaseInput from '@GUI/input/VueBaseInput.vue'
+import VueBaseInput from '@GUI/input/VueBaseInput.vue';
 import VueBaseCheckbox from '@GUI/checkbox/VueBaseCheckbox.vue';
+import VueBaseRadio from '@GUI/radio/VueBaseRadio.vue';
+import IconBase from '@GUI/icons/IconBase.vue'
 
 import { ref } from 'vue'
 
@@ -560,9 +684,16 @@ const checkedActive5 = ref(false)
 const checkedActive6 = ref(true)
 const checkedActive7 = ref(true)
 const checkedActive8 = ref(false)
+
+const selectedRadio1 = ref('')
+const selectedRadio2 = ref('')
+const selectedRadio3 = ref('')
+const selectedRadio4 = ref('')
+const selectedRadio5 = ref('')
+const selectedRadio6 = ref('')
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .btns-wrapper {
     display: flex;
 }
@@ -624,5 +755,13 @@ const checkedActive8 = ref(false)
 
 .button {
     border: none;
+}
+
+.radio-label_text {
+    color: $transparent-color;
+    background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 18px;
 }
 </style>
