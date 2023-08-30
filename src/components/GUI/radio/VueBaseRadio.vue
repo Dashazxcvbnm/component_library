@@ -3,23 +3,20 @@
 
         <input
         type="radio"
-        :class="[{ 'radio-input_disabled': disabled }, radioSize, 'radio-input']"
+        :class="[{ 'radio-input_disabled': disabled }, `radio-input_size_${props.size}`, 'radio-input']"
         v-bind="attributes"
         :checked="checked"
         @change="$emit('update:modelValue', $event.target.value)">
         
         <label
-        :class="[{ 'radio-label_disabled': disabled }, radioLabelSize, 'radio-label']"
-        :for="id">{{ label }}</label>
 
-        <slot/>
+        :class="[{ 'radio-label_disabled': disabled }, `radio-label_size_${props.size}`, 'radio-label']"
+        :for="id">{{ label }} <slot/></label>
 
     </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
 const props = defineProps({
 
   modelValue: {
@@ -77,8 +74,6 @@ const attributes = {
   disabled: props.disabled
 }
 
-const radioSize = ref(`radio-input_size_${props.size}`)
-const radioLabelSize = ref(`radio-label_size_${props.size}`)
 </script>
 
 <style scoped lang="scss">

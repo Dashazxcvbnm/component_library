@@ -562,14 +562,14 @@
         <VueBaseRadio
         label="Radio 1"
         value="Radio1"
-        id="1"
+        id="radio1"
         name="radio1"
         v-model="selectedRadio1"/>
 
         <VueBaseRadio
         label="RADIO 2"
         value="Radio2"
-        id=2
+        id='radio2'
         name="radio1"
         v-model="selectedRadio1"/>
 
@@ -581,7 +581,7 @@
         <VueBaseRadio
         label="Radio 3"
         value="Radio3"
-        id="3"
+        id="radio3"
         name="radio2"
         disabled
         v-model="selectedRadio2"/>
@@ -589,7 +589,7 @@
         <VueBaseRadio
         label="Radio 4"
         value="Radio4"
-        id=4
+        id='radio4'
         name="radio2"
         checked
         disabled
@@ -603,7 +603,7 @@
         <VueBaseRadio
         label="Radio 5"
         value="Radio5"
-        id="5"
+        id="radio5"
         name="radio3"
         v-model="selectedRadio3"/>
 
@@ -615,7 +615,7 @@
         <VueBaseRadio
         label="Radio 6"
         value="Radio6"
-        id="6"
+        id="radio6"
         name="radio4"
         size="medium"
         v-model="selectedRadio4"/>
@@ -628,7 +628,7 @@
         <VueBaseRadio
         label="Radio 7"
         value="Radio7"
-        id="7"
+        id="radio7"
         name="radio5"
         size="large"
         v-model="selectedRadio5"/>
@@ -640,19 +640,19 @@
         <span class="text">Radio с содержимым slot</span>
         <vue-base-radio
         value="Radio8"
-        id="8"
+        id="radio8"
         name="radio6"
         size="large"
         v-model="selectedRadio6">
 
-        <label for="8" class="radio-label_text">Radio 8</label>
+        <label for="radio8" class="radio-label_text">Radio 8</label>
 
         </vue-base-radio>
 
         <vue-base-radio
         label="Radio 9"
         value="Radio9"
-        id="9"
+        id="radio9"
         name="radio6"
         size="large"
         v-model="selectedRadio6">
@@ -664,16 +664,16 @@
 
         <vue-base-radio
         value="Radio10"
-        id="10"
+        id="radio10"
         name="radio6"
         size="large"
         v-model="selectedRadio6">
 
-        <icon-base
-        name="CatPaw"
-        class="radio-icon"
-        color="coral"/>
-
+            <icon-base
+            name="CatPaw"
+            class="radio-icon"
+            color="coral"/>
+  
         </vue-base-radio>
 
     </div>
