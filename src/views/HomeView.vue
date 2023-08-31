@@ -569,7 +569,7 @@
         <VueBaseRadio
         label="RADIO 2"
         value="Radio2"
-        id='radio2'
+        id="radio2"
         name="radio1"
         v-model="selectedRadio1"/>
 
@@ -589,7 +589,7 @@
         <VueBaseRadio
         label="Radio 4"
         value="Radio4"
-        id='radio4'
+        id="radio4"
         name="radio2"
         checked
         disabled
@@ -678,6 +678,40 @@
 
     </div>
 
+    <div class="wrap">
+
+        <span class="text">Группа radio: {{ selectedRadio7 }}</span>
+        <VueBaseRadioGroup
+        name="favoriteColor"
+        direcrion="horizontal"
+        :buttons="favoriteColorSelectionList"
+        v-model="selectedRadio7"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Ваша любимая еда: {{ selectedRadio8 }}</span>
+        <VueBaseRadioGroup
+        name="favoriteFood"
+        size="medium"
+        :buttons="favoriteFoodSelectionList"
+        v-model="selectedRadio8"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Ваш любимый напиток: {{ selectedRadio9 }}</span>
+        <VueBaseRadioGroup
+        name="favoriteDrink"
+        size="large"
+        :buttons="favoriteDrinkSelectionList"
+        v-model="selectedRadio9"
+        disabled/>
+
+    </div>
+
 </template>
 
 <script setup>
@@ -686,7 +720,8 @@ import VueBaseInput from '@GUI/input/VueBaseInput.vue';
 import VueBaseCheckbox from '@GUI/checkbox/VueBaseCheckbox.vue';
 import VueBaseCheckboxGroup from '../components/GUI/checkbox-group/VueBaseCheckboxGroup.vue';
 import VueBaseRadio from '@GUI/radio/VueBaseRadio.vue';
-import IconBase from '@GUI/icons/IconBase.vue'
+import IconBase from '@GUI/icons/IconBase.vue';
+import VueBaseRadioGroup from '@GUI/radio-group/VueBaseRadioGroup.vue';
 
 import { ref } from 'vue'
 
@@ -729,6 +764,33 @@ const selectedRadio3 = ref('')
 const selectedRadio4 = ref('')
 const selectedRadio5 = ref('')
 const selectedRadio6 = ref('')
+
+const favoriteColorSelectionList = ref([
+  { label: 'Желтый', value: 'yellow', id: 'radio11' },
+  { label: 'Зеленый', value: 'green', id: 'radio12' },
+  { label: 'Синий', value: 'blue', id: 'radio13' },
+  { label: 'Розовый', value: 'pink', id: 'radio14' }
+])
+
+const selectedRadio7 = ref('')
+
+const favoriteFoodSelectionList = ref([
+  { label: 'Макарошки', value: 'pasta', id: 'radio15' },
+  { label: 'Картошка', value: 'potato', id: 'radio16', disabled: true },
+  { label: 'Стейк', value: 'steak', id: 'radio17' },
+  { label: 'Грибной суп', value: 'mushroom-soup', id: 'radio18' }
+])
+
+const selectedRadio8 = ref('')
+
+const favoriteDrinkSelectionList = ref([
+  { label: 'Сок', value: 'juice', id: 'radio19', checked: true },
+  { label: 'Газировка', value: 'soda', id: 'radio20' },
+  { label: 'Компот', value: 'compote', id: 'radio21' },
+  { label: 'Квас', value: 'kvass', id: 'radio22' }
+])
+
+const selectedRadio9 = ref('')
 </script>
 
 <style scoped lang="scss">
