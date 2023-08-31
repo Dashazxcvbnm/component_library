@@ -755,8 +755,8 @@ const listOfCats = ref([
   {label: 'Burma', value: 'Burma', id: '8', checked: true, disabled: true }
 ])
 
-const selectedDogs = ref([])
-const selectedCats = ref([])
+const selectedDogs = ref(['Corgi', 'Dalmatian', 'Beagle'])
+const selectedCats = ref(['Maine-Coon', 'Sphinx', 'Burma'])
 
 const selectedRadio1 = ref('')
 const selectedRadio2 = ref('')
@@ -776,12 +776,12 @@ const selectedRadio7 = ref('')
 
 const favoriteFoodSelectionList = ref([
   { label: 'Макарошки', value: 'pasta', id: 'radio15' },
-  { label: 'Картошка', value: 'potato', id: 'radio16', disabled: true },
+  { label: 'Картошка', value: 'potato', id: 'radio16', disabled: true, checked: true },
   { label: 'Стейк', value: 'steak', id: 'radio17' },
   { label: 'Грибной суп', value: 'mushroom-soup', id: 'radio18' }
 ])
 
-const selectedRadio8 = ref('')
+const selectedRadio8 = ref('Картошка')
 
 const favoriteDrinkSelectionList = ref([
   { label: 'Сок', value: 'juice', id: 'radio19', checked: true },
@@ -790,7 +790,7 @@ const favoriteDrinkSelectionList = ref([
   { label: 'Квас', value: 'kvass', id: 'radio22' }
 ])
 
-const selectedRadio9 = ref('')
+const selectedRadio9 = ref('juice')
 </script>
 
 <style scoped lang="scss">

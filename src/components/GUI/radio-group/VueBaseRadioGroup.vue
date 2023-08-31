@@ -3,15 +3,15 @@
     :class="[{'radio-group_wrapper': direcrion === 'horizontal'}]">
 
         <VueBaseRadio
-        v-for="option in buttons" :key="option.id"
+        v-for="button in buttons" :key="button.id"
         :class="[{'radio_wrapper': direcrion === 'horizontal'}]"
-        :label="option.label"
-        :id="option.id"
-        :value="option.value"
-        :checked="option.checked"
-        :disabled="option.disabled ? option.disabled : disabled"
+        :label="button.label"
+        :id="button.id"
+        :value="button.value"
+        :checked="button.checked"
+        :disabled="button.disabled ? button.disabled : disabled"
         v-bind="attributes"
-        @change="$emit('update:modelValue', option.value)"></VueBaseRadio>
+        @change="$emit('update:modelValue', button.value)"></VueBaseRadio>
 
     </div>
 </template>
@@ -24,7 +24,7 @@ const props = defineProps({
     type: Array,
     required: true,
     validator(value) {
-      return value.every((option) => Object.keys(option).includes('label' && 'id' && 'value'))
+      return value.every((button) => Object.keys(button).includes('label' && 'id' && 'value'))
     }
   },
 
