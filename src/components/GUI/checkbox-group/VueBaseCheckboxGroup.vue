@@ -3,14 +3,14 @@
     :class="[{'checkbox-group_wrapper': direcrion === 'horizontal'}]">
 
     <VueBaseCheckbox
-    v-for="option in buttonsCopy" :key="option.id"
+    v-for="button in buttonsCopy" :key="button.id"
     :class="[{'checkbox_wrapper': direcrion === 'horizontal'}]"
-    :label="option.label"
-    :id="option.id"
-    :value="option.value"
-    :disabled="option.disabled"
+    :label="button.label"
+    :id="button.id"
+    :value="button.value"
+    :disabled="button.disabled"
     v-bind="attributes"
-    v-model="option.checked"/>
+    v-model="button.checked"/>
 
     </div>
 </template>
@@ -25,7 +25,7 @@ const props = defineProps({
     type: Array,
     required: true,
     validator(value) {
-      return value.every((option) => Object.keys(option).includes('label' && 'id' && 'checked' && 'value'))
+      return value.every((button) => Object.keys(button).includes('label' && 'id' && 'checked' && 'value'))
     }
   },
 

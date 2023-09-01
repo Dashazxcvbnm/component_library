@@ -468,7 +468,7 @@
 
     <div class="wrap">
 
-        <span class="">Checkboxes</span>
+        <span class="text">Checkboxes</span>
         
         <vue-base-checkbox
         label="Checkbox 1"
@@ -556,13 +556,172 @@
 
     </div>
 
+    <div class="wrap">
+
+        <span class="text">Radio buttons: {{ selectedRadio1 }}</span>
+        <VueBaseRadio
+        label="Radio 1"
+        value="Radio1"
+        id="radio1"
+        name="radio1"
+        v-model="selectedRadio1"/>
+
+        <VueBaseRadio
+        label="RADIO 2"
+        value="Radio2"
+        id="radio2"
+        name="radio1"
+        v-model="selectedRadio1"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Диактивированные radio</span>
+        <VueBaseRadio
+        label="Radio 3"
+        value="Radio3"
+        id="radio3"
+        name="radio2"
+        disabled
+        v-model="selectedRadio2"/>
+
+        <VueBaseRadio
+        label="Radio 4"
+        value="Radio4"
+        id="radio4"
+        name="radio2"
+        checked
+        disabled
+        v-model="selectedRadio2"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">default(самый маленький) size</span>
+        <VueBaseRadio
+        label="Radio 5"
+        value="Radio5"
+        id="radio5"
+        name="radio3"
+        v-model="selectedRadio3"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">medium size</span>
+        <VueBaseRadio
+        label="Radio 6"
+        value="Radio6"
+        id="radio6"
+        name="radio4"
+        size="medium"
+        v-model="selectedRadio4"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">large size</span>
+        <VueBaseRadio
+        label="Radio 7"
+        value="Radio7"
+        id="radio7"
+        name="radio5"
+        size="large"
+        v-model="selectedRadio5"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Radio с содержимым slot</span>
+        <vue-base-radio
+        value="Radio8"
+        id="radio8"
+        name="radio6"
+        size="large"
+        v-model="selectedRadio6">
+
+        <label for="radio8" class="radio-label_text">Radio 8</label>
+
+        </vue-base-radio>
+
+        <vue-base-radio
+        label="Radio 9"
+        value="Radio9"
+        id="radio9"
+        name="radio6"
+        size="large"
+        v-model="selectedRadio6">
+
+        <icon-base
+        name="CatPaw"/>
+
+        </vue-base-radio>
+
+        <vue-base-radio
+        value="Radio10"
+        id="radio10"
+        name="radio6"
+        size="large"
+        v-model="selectedRadio6">
+
+            <icon-base
+            name="CatPaw"
+            class="radio-icon"
+            color="coral"/>
+  
+        </vue-base-radio>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Группа radio: {{ selectedRadio7 }}</span>
+        <VueBaseRadioGroup
+        name="favoriteColor"
+        direcrion="horizontal"
+        :buttons="favoriteColorSelectionList"
+        v-model="selectedRadio7"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Ваша любимая еда: {{ selectedRadio8 }}</span>
+        <VueBaseRadioGroup
+        name="favoriteFood"
+        size="medium"
+        :buttons="favoriteFoodSelectionList"
+        v-model="selectedRadio8"/>
+
+    </div>
+
+    <div class="wrap">
+
+        <span class="text">Ваш любимый напиток: {{ selectedRadio9 }}</span>
+        <VueBaseRadioGroup
+        name="favoriteDrink"
+        size="large"
+        :buttons="favoriteDrinkSelectionList"
+        v-model="selectedRadio9"
+        disabled/>
+
+    </div>
+
 </template>
 
 <script setup>
 import VueBaseButton from '@GUI/buttons/VueBaseButton.vue';
-import VueBaseInput from '@GUI/input/VueBaseInput.vue'
+import VueBaseInput from '@GUI/input/VueBaseInput.vue';
 import VueBaseCheckbox from '@GUI/checkbox/VueBaseCheckbox.vue';
 import VueBaseCheckboxGroup from '../components/GUI/checkbox-group/VueBaseCheckboxGroup.vue';
+import VueBaseRadio from '@GUI/radio/VueBaseRadio.vue';
+import IconBase from '@GUI/icons/IconBase.vue';
+import VueBaseRadioGroup from '@GUI/radio-group/VueBaseRadioGroup.vue';
 
 import { ref } from 'vue'
 
@@ -596,11 +755,45 @@ const listOfCats = ref([
   {label: 'Burma', value: 'Burma', id: '8', checked: true, disabled: true }
 ])
 
-const selectedDogs = ref([])
-const selectedCats = ref([])
+const selectedDogs = ref(['Corgi', 'Dalmatian', 'Beagle'])
+const selectedCats = ref(['Maine-Coon', 'Sphinx', 'Burma'])
+
+const selectedRadio1 = ref('')
+const selectedRadio2 = ref('')
+const selectedRadio3 = ref('')
+const selectedRadio4 = ref('')
+const selectedRadio5 = ref('')
+const selectedRadio6 = ref('')
+
+const favoriteColorSelectionList = ref([
+  { label: 'Желтый', value: 'yellow', id: 'radio11' },
+  { label: 'Зеленый', value: 'green', id: 'radio12' },
+  { label: 'Синий', value: 'blue', id: 'radio13' },
+  { label: 'Розовый', value: 'pink', id: 'radio14' }
+])
+
+const selectedRadio7 = ref('')
+
+const favoriteFoodSelectionList = ref([
+  { label: 'Макарошки', value: 'pasta', id: 'radio15' },
+  { label: 'Картошка', value: 'potato', id: 'radio16', disabled: true, checked: true },
+  { label: 'Стейк', value: 'steak', id: 'radio17' },
+  { label: 'Грибной суп', value: 'mushroom-soup', id: 'radio18' }
+])
+
+const selectedRadio8 = ref('Картошка')
+
+const favoriteDrinkSelectionList = ref([
+  { label: 'Сок', value: 'juice', id: 'radio19', checked: true },
+  { label: 'Газировка', value: 'soda', id: 'radio20' },
+  { label: 'Компот', value: 'compote', id: 'radio21' },
+  { label: 'Квас', value: 'kvass', id: 'radio22' }
+])
+
+const selectedRadio9 = ref('juice')
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .btns-wrapper {
     display: flex;
 }
@@ -662,5 +855,13 @@ const selectedCats = ref([])
 
 .button {
     border: none;
+}
+
+.radio-label_text {
+    color: $transparent-color;
+    background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 18px;
 }
 </style>
