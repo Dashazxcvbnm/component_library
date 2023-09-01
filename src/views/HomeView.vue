@@ -424,14 +424,14 @@
         size="small"
         suffixElement>
 
-        <img src="src/components/icons/Search.svg"></vue-base-input>
+        <img src="../components/icons/Search.svg"></vue-base-input>
 
         <vue-base-input
         class="input"
         size="small"
         prefixElement>
 
-        <img src="src/components/icons/Search.svg"></vue-base-input>
+        <img src="../components/icons/Search.svg"></vue-base-input>
     </div>
 
     <div class="wrap">
