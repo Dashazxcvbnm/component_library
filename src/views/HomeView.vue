@@ -712,6 +712,57 @@
 
     </div>
 
+    <div class="wrap-table">
+
+        <span class="text">Компонент таблицы</span>
+        <span class="text">С кликом и наведением мышь по строке</span>
+        <VueBaseTable
+        :columns="tableHead"
+        :data="dataTable"
+        onRow
+        @clickEventForRow="testClickForRow"
+        withRowMouseEnterEvent
+        @mouseenterEventForRow="testmouseenterForRow"/>
+
+        <span class="text">С кликом по столбцу</span>
+        <VueBaseTable
+        :columns="tableHead"
+        :data="dataTable"
+        onColumn
+        @clickEventForColumn="testClickForColumn"/>
+
+        <span class="text">С кликом по ячейке</span>
+        <VueBaseTable
+        :columns="tableHead"
+        :data="dataTable"
+        onCell
+        @clickEventForCell="testClickForCell"/>
+
+    </div>
+
+    <span class="text">Компонент таблицы без заданной ширины</span>
+    <VueBaseTable
+    :columns="tableHead"
+    :data="dataTable"/>
+
+    <div class="wrap-table">
+
+        <span class="text">Компонент таблицы</span>
+        <VueBaseTable
+        :columns="tableHead"/>
+
+    </div>
+
+    <div class="wrap-table">
+
+        <span class="text">Компонент таблицы с индикатором загрузки</span>
+        <VueBaseTable
+        :columns="tableHead"
+        :data="dataTable1"
+        isLoading/>
+
+    </div>
+
 </template>
 
 <script setup>
@@ -722,6 +773,7 @@ import VueBaseCheckboxGroup from '../components/GUI/checkbox-group/VueBaseCheckb
 import VueBaseRadio from '@GUI/radio/VueBaseRadio.vue';
 import IconBase from '@GUI/icons/IconBase.vue';
 import VueBaseRadioGroup from '@GUI/radio-group/VueBaseRadioGroup.vue';
+import VueBaseTable from '@GUI/table/VueBaseTable.vue';
 
 import { ref } from 'vue'
 
@@ -791,6 +843,94 @@ const favoriteDrinkSelectionList = ref([
 ])
 
 const selectedRadio9 = ref('juice')
+
+const tableHead = ['Name', 'Phone', 'Address', 'Company', 'Number']
+
+const dataTable = [
+  {
+    name: 'Shane Cooper',
+    phone: '(907) 555-0101',
+    address: 'beth.fernandez@example.com',
+    company: 'Nintendo',
+    number: '817.08'
+  },
+
+  { 
+    name: 'Nathan Henry',
+    phone: '(207) 555-0119',
+    address: 'craig.kelley@example.com',
+    company: 'Pizza Hut',
+    number: '801.83'
+  },
+
+  {
+    name: 'Shane Cooper',
+    phone: '(907) 555-0101',
+    address: 'beth.fernandez@example.com',
+    company: 'Nintendo',
+    number: '817.08'
+  },
+
+  { 
+    name: 'Nathan Henry',
+    phone: '(207) 555-0119',
+    address: 'craig.kelley@example.com',
+    company: 'Pizza Hut',
+    number: '801.83'
+  },
+
+  {
+    name: 'Shane Cooper',
+    phone: '(907) 555-0101',
+    address: 'beth.fernandez@example.com',
+    company: 'Nintendo',
+    number: '817.08'
+  },
+
+  { 
+    name: 'Nathan Henry',
+    phone: '(207) 555-0119',
+    address: 'craig.kelley@example.com',
+    company: 'Pizza Hut',
+    number: '801.83'
+  }
+]
+
+const dataTable1 = [
+  {
+    name: '',
+    phone: '',
+    address: '',
+    company: '',
+    number: ''
+  },
+  {
+    name: '',
+    phone: '',
+    address: '',
+    company: '',
+    number: ''
+  }
+]
+
+function testClickForRow(rowIndex) {
+  const clickedRow = dataTable.find((_, index)=> index === rowIndex);
+  console.log(clickedRow)
+  console.log('Клик по строке')
+}
+
+function testClickForColumn() {
+  console.log('Клик по столбцу')
+}
+
+function testClickForCell(data) {
+  console.log(data.value)
+  console.log('Клик по ячейке')
+}
+
+function testmouseenterForRow() {
+  console.log('Строка!')
+}
 </script>
 
 <style scoped lang="scss">
@@ -828,9 +968,16 @@ const selectedRadio9 = ref('juice')
 
 .wrap {
     width: 650px;
+    &-table {
+        width: 877px;
+    }
 }
 
 .wrap:not(:first-child) {
+    margin: 50px 0;
+}
+
+.wrap-table:not(:first-child) {
     margin: 50px 0;
 }
 
