@@ -919,7 +919,13 @@ function testClickForRow(rowIndex) {
   console.log('Клик по строке')
 }
 
-function testClickForColumn() {
+function testClickForColumn(data) {
+  const clickedRow = dataTable.find((_, index)=> index === data.rowIndex);
+  const cellKey = Object.keys(clickedRow).find((key)=> clickedRow[key] === data.value);
+  const columnClicked = dataTable.map((data) => {
+    return data[cellKey]
+  })
+  console.log(columnClicked)
   console.log('Клик по столбцу')
 }
 

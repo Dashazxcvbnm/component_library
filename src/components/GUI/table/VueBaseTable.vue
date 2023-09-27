@@ -26,11 +26,11 @@
                         :class="[{'table-body_column__hover-color' : onColumn},
                         {'table-body_cell__hover-color' : onCell},
                         {'table-body_cell' : onCell}, 'table-body_column']"
-                        @click="onCell ? $emit('clickEventForCell', { rowIndex: index, value: value }) : null, onColumn ? $emit('clickEventForColumn') : null">
+                        @click="onCell ? $emit('clickEventForCell', { rowIndex: index, value: value }) : null, onColumn ? $emit('clickEventForColumn', {rowIndex: index, value: value}) : null">
 
                         <span v-if="value">{{ value }}</span>
-
-                        <span v-else class="table-body_loader"></span></td>
+                        <div v-else class="table-body_loader"></div>
+                        </td>
 
                     </tr>
                     
@@ -120,13 +120,9 @@ defineEmits(['clickEventForRow', 'clickEventForColumn', 'clickEventForCell', 'mo
         background-color: $dark-grey;
         color: $basic-white;
 
-        &_column:first-child {
-            padding: 0 15px 0 15px;
-        }
-
         &_column {
             font-weight: 400;
-            padding: 0 15px 0 0;
+            padding: 0 15px 0 15px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -153,16 +149,11 @@ defineEmits(['clickEventForRow', 'clickEventForColumn', 'clickEventForCell', 'mo
                 background-color: $light-red;
             }
         }
-
-        }
-
-        &_column:first-child {
-            padding: 0 15px 0 15px;
         }
 
         &_column {
             font-weight: 400;
-            padding: 0 15px 0 0;
+            padding: 0 15px 0 15px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
@@ -172,28 +163,28 @@ defineEmits(['clickEventForRow', 'clickEventForColumn', 'clickEventForCell', 'mo
             cursor: pointer;
 
             &__hover-color:hover {
-                background-color: $basic-red;
+                background-color: $light-red;
             }
         }
 
         &_loader {
-        display: inline-block;
-        color: $basic-blue;
-        border-radius: 50%;
-        box-shadow: 19px 0 0 7px, 38px 0 0 3px, 57px 0 0 0;
-        transform: translateY(-5px);
-        animation: loader 0.8s infinite alternate linear;
-    }
-
-    @keyframes loader {
-        50% {
-            box-shadow: 19px 0 0 3px, 38px 0 0 7px, 57px 0 0 3px;
+            width: 100%;
+            height: 10px; 
+            cursor: progress; 
+            background: 
+                linear-gradient(0.25turn, transparent, $basic-white, transparent),
+                linear-gradient(#dae0e7, $basic-white);
+            background-repeat: no-repeat;
+            background-size: 315px 250px, 315px 180px, 100px 100px, 225px 30px; 
+            background-position: -315px 0, 0 0, 0px 190px, 50px 195px; 
+            animation: loading 1.5s infinite; 
         }
 
-        100% {
-            box-shadow: 19px 0 0 0, 38px 0 0 3px, 57px 0 0 7px;
+        @keyframes loading {  
+            to {
+                background-position: 315px 0, 0 0, 0 190px, 50px 195px;
+            }
         }
-    }
     }
 
     &-body .table-body_row:nth-child(odd) {
