@@ -2,5 +2,19 @@
 @font-face {
     font-family: 'Oswald';
     font-weight: 500;
-    src: local('Oswald Medium'), local('Oswald-Medium'), url('Oswaldmedium.woff2') format('woff2'), url('Oswaldmedium.woff') format('woff'), url('Oswaldmedium.ttf') format('truetype');
+    src: local('Oswald Medium'),
+    local('Oswald-Medium'),
+    url('Oswaldmedium.woff2') format('woff2'),
+    url('Oswaldmedium.woff') format('woff'),
+    url('Oswaldmedium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Oswald-Regular';
+    font-weight: 400;
+    src: local('Oswald Regular'),
+    local('Oswald-Regular'),
+    url('Oswaldregular.woff2') format('woff2'),
+    url('Oswaldregular.woff') format('woff'),
+    url('Oswaldregular.ttf') format('truetype');
 }
